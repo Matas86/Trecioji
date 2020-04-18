@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+*.layout
+bin/
+obj/
+.vscode/
+*.txt
+*.depend
+main
