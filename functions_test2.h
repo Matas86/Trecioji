@@ -15,7 +15,7 @@
 #include <list>
 #include <deque>
 
-#include "student_test2.h"
+#include "student.h"
 
 void Skaityk(std::vector<student> &stud);
 

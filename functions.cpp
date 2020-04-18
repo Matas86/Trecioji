@@ -1,6 +1,5 @@
 #include "functions.h"
 #include "student.h"
-
 #include <iostream>
 #include <iomanip>
 

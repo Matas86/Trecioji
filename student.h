@@ -3,20 +3,39 @@
 
 #include <string>
 #include <vector>
-
-struct student
+#include <algorithm>
+class student
 {
+private:
     std::string name;
     std::string surname;
-    int homeworkSum;
     std::vector<int> homework;
     int exam;
     double finalGrade;
     bool random;
+public:
     student()
     {
-        homeworkSum = 0;
     }
+    student(std::string n, std::string s): name(n), surname(s) {}
+
+    std::string getName() {return name;}
+    std::string getSurname() {return surname;}
+    std::vector<int> getGrades() {return homework;}
+    int getGradesCount() {return homework.size(); }
+    int getExam() {return exam;}
+    bool getRandom() {return random;}
+    double getFinal() {return finalGrade;}
+    bool hasGrades() {return !homework.empty();}
+
+    void setName(int n) {name = n;}
+    void setSurname (int s) {surname = s;}
+    void addGrade(int grade) {homework.push_back(grade); }
+    void setGrades(std::vector<int> grades) {homework = grades; }
+    void setExam(int examg) {exam = examg; }
+    void setRandom(bool reiksme) {random = reiksme; }
+    void setFinal(double f) {finalGrade = f;}
+
 };
 
 #endif // STUDENT_H

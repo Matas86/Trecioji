@@ -1,6 +1,5 @@
 #include "functions_test2.h"
-#include "student_test2.h"
-
+#include "student.h"
 #include <iostream>
 #include <iomanip>
 #include <chrono>
@@ -53,15 +52,16 @@ void StartProgram()
                 std::cout<<"\n";
             }
             if(randomas == "y")
-                stud[i].random = true;
+                stud[i].setRandom(true);
             else
-                stud[i].random = false;
+                stud[i].setRandom(false);
 
-            if(!stud[i].random)
+            if(!stud[i].getRandom())
         {
-            student currentStud;
+            
+            std::string name, surname;
             std::cout<<"Iveskite savo varda: \n";
-            while(!(std::cin >> currentStud.name))
+            while(!(std::cin >> name))
             {
                 std::cout << "Bloga ivestis! Iveskite savo varda";
                 std::cin.clear();
@@ -70,14 +70,14 @@ void StartProgram()
             }
 
             std::cout<<"Iveskite savo pavarde: \n";
-            while(!(std::cin >> currentStud.surname))
+            while(!(std::cin >> surname))
             {
                 std::cout << "Bloga ivestis! Iveskite savo pavarde";
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                 std::cout<<"\n";
             }
-
+            student currentStud(name,surname);
             int skc;
             bool veda;
             std::string ats;
@@ -95,9 +95,7 @@ void StartProgram()
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                     std::cout<<"\n";
                 }
-                currentStud.homeworkSum += skaicius;
-                skc++;
-                currentStud.homework.push_back(skaicius);
+                currentStud.addGrade(skaicius);
                 std::cout<<"Ar norite toliau vesti namu darbu balus? (taip - y, ne - n) \n";
                 std::cin>>ats;
                 if(ats == "n")
@@ -110,36 +108,38 @@ void StartProgram()
 
 
             std::cout<<"Iveskite savo egzamino bala: \n";
-            while(!(std::cin >> currentStud.exam) || currentStud.exam >10 || currentStud.exam<0)
+            int examGrade;
+            while(!(std::cin >> examGrade) || examGrade > 10 || examGrade < 0 )
             {
                 std::cout << "Bloga ivestis! Iveskite savo egzamino bala skaiciumi (0-10)";
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                 std::cout<<"\n";
             }
+            currentStud.setExam(examGrade);
             stud.push_back(currentStud);
         }
         else
         {
-            student currentStud;
+            std::string name, surname;
             std::cout<<"Iveskite savo varda: \n";
-        while(!(std::cin >> currentStud.name))
-        {
-            std::cout << "Bloga ivestis! Iveskite savo varda";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout<<"\n";
-        }
+            while(!(std::cin >> name))
+            {
+                std::cout << "Bloga ivestis! Iveskite savo varda";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+                std::cout<<"\n";
+            }
 
-        std::cout<<"Iveskite savo pavarde: \n";
-        while(!(std::cin >> currentStud.surname))
-        {
-            std::cout << "Bloga ivestis! Iveskite savo pavarde";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout<<"\n";
-        }
-
+            std::cout<<"Iveskite savo pavarde: \n";
+            while(!(std::cin >> surname))
+            {
+                std::cout << "Bloga ivestis! Iveskite savo pavarde";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+                std::cout<<"\n";
+            }
+            student currentStud(name,surname); 
         int skc;
         bool veda;
         std::string ats;
@@ -152,7 +152,7 @@ void StartProgram()
             skaicius = rand() %10 +1;
             std::cout<<skaicius<<std::endl;
             skc++;
-            currentStud.homework.push_back(skaicius);
+            currentStud.addGrade(skaicius);
             std::cout<<"Ar norite toliau generuoti namu darbu balus? (taip - y, ne - n) \n";
             std::cin>>ats;
             if(ats == "n")
@@ -164,8 +164,8 @@ void StartProgram()
 
 
         std::cout<<"Sugeneruotas egzamino balas: \n";
-        currentStud.exam = rand()%10 +1;
-        std::cout<<currentStud.exam<<std::endl;
+        currentStud.setExam(rand()%10 +1);
+        std::cout<<currentStud.getExam()<<std::endl;
         stud.push_back(currentStud);
         }
             
@@ -196,7 +196,7 @@ void Isvesk(std::vector<student> stud)
 
             for(int i=0; i<stud.size(); i++)
 
-                cout<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].finalGrade<<"\n";
+                cout<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].getFinal()<<"\n";
         }
 
         else if( temp == "m")
@@ -207,17 +207,17 @@ void Isvesk(std::vector<student> stud)
             for(int i=0; i<stud.size(); i++)
             {
 
-                sort(stud[i].homework.begin(), stud[i].homework.end());
+                sort(stud.begin(), stud.end(), sortStudents);
 
-
-                if(stud[i].homework.size()%2==1)
+                vector<int> homeworks = stud[i].getGrades();
+                if(stud[i].getGradesCount()%2==1)
                 {
-
-                    cout<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].homework[(stud[i].homework.size())/2]*1.0<<"\n";
+                    
+                    cout<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<homeworks[(stud[i].getGradesCount())/2]*1.0<<"\n";
                 }
                 else
                 {
-                    cout<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<(stud[i].homework[(stud[i].homework.size())/2 - 1] + stud[i].homework[((stud[i].homework.size())/2)])/2.0<<"\n";
+                    cout<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<(homeworks[(stud[i].getGradesCount())/2 - 1] + homeworks[((stud[i].getGradesCount())/2)])/2.0<<"\n";
                 }
 
             }
@@ -242,7 +242,7 @@ void Isvesk(std::vector<student> stud)
 
             for(int i=0; i<stud.size(); i++)
 
-                write<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].finalGrade<<"\n";
+                write<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].getFinal()<<"\n";
         }
 
         else if( temp == "m")
@@ -253,17 +253,18 @@ void Isvesk(std::vector<student> stud)
             for(int i=0; i<stud.size(); i++)
             {
 
-                sort(stud[i].homework.begin(), stud[i].homework.end());
+                sort(stud.begin(), stud.end(), sortStudents);
 
+                vector<int> homeworks = stud[i].getGrades();
 
-                if(stud[i].homework.size()%2==1)
+                if(stud[i].getGradesCount()%2==1)
                 {
 
-                    write<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<stud[i].homework[(stud[i].homework.size())/2]*1.0<<"\n";
+                    write<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<homeworks[(stud[i].getGradesCount())/2]*1.0<<"\n";
                 }
                 else
                 {
-                    write<<setw(30)<<left<<stud[i].surname<<setw(30)<<left<<stud[i].name<<setw(5)<<left<<fixed<<setprecision(2)<<(stud[i].homework[(stud[i].homework.size())/2 - 1] + stud[i].homework[((stud[i].homework.size())/2)])/2.0<<"\n";
+                    write<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<(homeworks[(stud[i].getGradesCount())/2 - 1] + homeworks[((stud[i].getGradesCount())/2)])/2.0<<"\n";
                 }
 
             }
@@ -296,10 +297,11 @@ void Skaityk(std::vector<student> &stud, std::string filename)
     
     while(getline(read,line))
     {
-        student *currentStud = new student();
         std::stringstream stream;
+        std::string name,surname;
         stream<<line;
-        stream>>currentStud->name>>currentStud->surname;
+        stream>>name>>surname;
+        student *currentStud = new student(name,surname);
         while(stream>>pazymysSt)
         {
             try
@@ -311,11 +313,11 @@ void Skaityk(std::vector<student> &stud, std::string filename)
                 std::cout<<"Ivyko klaida nuskaitant pazymi \n";
             }
             
-            currentStud->homework.push_back(pazInt);
+            currentStud->addGrade(pazInt);
         }
 
-        currentStud->exam = currentStud->homework.back();
-        currentStud->homework.pop_back();
+        currentStud->setExam(pazInt);
+        currentStud->getGrades().pop_back();
         stud.push_back(*currentStud);
         delete currentStud;
 
@@ -343,10 +345,11 @@ void Skaityk(std::list<student> &stud, std::string filename)
     
     while(getline(read,line))
     {
-        student *currentStud = new student();
         std::stringstream stream;
+        std::string name,surname;
         stream<<line;
-        stream>>currentStud->name>>currentStud->surname;
+        stream>>name>>surname;
+        student *currentStud = new student(name,surname);
         while(stream>>pazymysSt)
         {
             try
@@ -358,11 +361,11 @@ void Skaityk(std::list<student> &stud, std::string filename)
                 std::cout<<"Ivyko klaida nuskaitant pazymi \n";
             }
             
-            currentStud->homework.push_back(pazInt);
+            currentStud->addGrade(pazInt);
         }
 
-        currentStud->exam = currentStud->homework.back();
-        currentStud->homework.pop_back();
+        currentStud->setExam(pazInt);
+        currentStud->getGrades().pop_back();
         stud.push_back(*currentStud);
         delete currentStud;
 
@@ -389,10 +392,11 @@ void Skaityk(std::deque<student> &stud, std::string filename)
     
     while(getline(read,line))
     {
-        student *currentStud = new student();
         std::stringstream stream;
+        std::string name,surname;
         stream<<line;
-        stream>>currentStud->name>>currentStud->surname;
+        stream>>name>>surname;
+        student *currentStud = new student(name,surname);
         while(stream>>pazymysSt)
         {
             try
@@ -404,11 +408,11 @@ void Skaityk(std::deque<student> &stud, std::string filename)
                 std::cout<<"Ivyko klaida nuskaitant pazymi \n";
             }
             
-            currentStud->homework.push_back(pazInt);
+            currentStud->addGrade(pazInt);
         }
 
-        currentStud->exam = currentStud->homework.back();
-        currentStud->homework.pop_back();
+        currentStud->setExam(pazInt);
+        currentStud->getGrades().pop_back();
         stud.push_back(*currentStud);
         delete currentStud;
 
@@ -420,13 +424,12 @@ void FinalCounter(std::vector<student> &stud)
 {
     for(int i=0; i<stud.size(); i++)
     {
-        for(int j=0; j<stud[i].homework.size(); j++)
+        int tempSum =0;
+        for(int j=0; j<stud[i].getGradesCount(); j++)
         {
-           stud.at(i).homeworkSum+=stud.at(i).homework.at(j);
+           tempSum+=stud.at(i).getGrades().at(j);
         }
-        stud.at(i).finalGrade = (stud.at(i).homeworkSum*1.0/stud.at(i).homework.size()*0.4) + (stud.at(i).exam)*0.6;
-        if(stud.at(i).finalGrade>=5) stud.at(i).cool = true;
-        else stud.at(i).cool = false;
+        stud.at(i).setFinal( (tempSum*1.0/stud.at(i).getGradesCount()*0.4) + (stud.at(i).getExam())*0.6);
     }
     std::sort(stud.begin(),stud.end(), sortStudents);
 }
@@ -437,13 +440,13 @@ double FinalCounter(student stud)
     int sum = 0;
     double avg;
 
-    for(int i = 0; i < stud.homework.size(); i++){
-        sum += stud.homework.at(i);
+    for(int i = 0; i < stud.getGradesCount(); i++){
+        sum += stud.getGrades().at(i);
     }
 
-    avg = stud.homework.empty() ? 0.0 : (double)sum/stud.homework.size();
+    avg = stud.hasGrades() ? 0.0 : (double)sum/stud.getGradesCount();
 
-    return (0.4 * avg) + (0.6 * stud.exam);
+    return (0.4 * avg) + (0.6 * stud.getExam());
 }
 
 
@@ -451,20 +454,19 @@ void FinalCounter(std::deque<student> &stud)
 {
     for(int i=0; i<stud.size(); i++)
     {
-        for(int j=0; j<stud[i].homework.size(); j++)
+        int tempSum =0;
+        for(int j=0; j<stud[i].getGradesCount(); j++)
         {
-           stud.at(i).homeworkSum+=stud.at(i).homework.at(j);
+           tempSum+=stud.at(i).getGrades().at(j);
         }
-        stud.at(i).finalGrade = (stud.at(i).homeworkSum*1.0/stud.at(i).homework.size()*0.4) + (stud.at(i).exam)*0.6;
-        //if(stud.at(i).finalGrade>=5) stud.at(i).cool = true;
-        //else stud.at(i).cool = false;
+        stud.at(i).setFinal( (tempSum*1.0/stud.at(i).getGradesCount()*0.4) + (stud.at(i).getExam())*0.6);
     }
     std::sort(stud.begin(),stud.end(), sortStudents);
 }
 
 bool sortStudents(student A, student B)
 {
-    if(B.name > A.name || B.surname > A.surname)
+    if(B.getName() > A.getName() || B.getSurname() > A.getSurname() )
     {
         return true;
     }
@@ -473,7 +475,7 @@ bool sortStudents(student A, student B)
 
 bool sortStudentsByGrade(student A, student B)
 {
-    if(B.finalGrade > A.finalGrade)
+    if(B.getFinal() > A.getFinal())
     {
         return true;
     }
@@ -558,7 +560,7 @@ void Generate()
         std::list<student>::iterator it = listStudents.begin();
         for(int i = 0; i < listStudents.size(); i++, it++)
         {
-            (*it).finalGrade = FinalCounter(*it);
+            (*it).setFinal(FinalCounter(*it));
         }
 
         end = std::chrono::high_resolution_clock::now();
@@ -674,7 +676,7 @@ void Generate2()
         std::list<student>::iterator it = listStudents.begin();
         for(int i = 0; i < listStudents.size(); i++, it++)
         {
-            (*it).finalGrade = FinalCounter(*it);
+            (*it).setFinal(FinalCounter(*it));
         }
 
         FinalCounter(dequeStudents);
@@ -687,7 +689,7 @@ void Generate2()
         // su vektoriumi
         auto start = std::chrono::high_resolution_clock::now(); 
         for(int j = 0; j < i; j++) {
-            if(vectorStudents.at(j).finalGrade >= 5) {
+            if(vectorStudents.at(j).getFinal() >= 5) {
                 vectorKietiakai.push_back(vectorStudents.at(j));
             }
             else vectorLievakai.push_back(vectorStudents.at(j));
@@ -704,7 +706,7 @@ void Generate2()
 
         start = std::chrono::high_resolution_clock::now(); 
         for(int j = 0; j < i; j++, it++) {
-            if((*it).finalGrade >= 5) listKietiakai.push_back((*it));
+            if((*it).getFinal() >= 5) listKietiakai.push_back((*it));
             else listLievakai.push_back((*it));
         }
         end = std::chrono::high_resolution_clock::now();
@@ -717,7 +719,7 @@ void Generate2()
         // su deque
         start = std::chrono::high_resolution_clock::now();
         for(student &s: dequeStudents) {
-            if(s.finalGrade >= 5) {
+            if(s.getFinal() >= 5) {
                 dequeKietiakai.push_back(s);
             }
             else dequeLievakai.push_back(s);
@@ -731,7 +733,7 @@ void Generate2()
 
 
         //Atskyrimas antruoju būdu
-
+/*
         //su vektoriumi
         start = std::chrono::high_resolution_clock::now();
 
@@ -740,14 +742,14 @@ void Generate2()
             vectorStudents.begin(), 
             vectorStudents.end(), 
             vectorKietiakai.begin(),
-            [](student s){return s.exam >= 5;});
+            [](student s){return s.getExam() >= 5;});
         vectorKietiakai.resize(std::distance(vectorKietiakai.begin(), cpyIt));
 
         vectorStudents.erase(
             std::remove_if(
                 vectorStudents.begin(), 
                 vectorStudents.end(), 
-                [](student s){return s.exam >= 5;}
+                [](student s){return s.getExam() >= 5;}
             ),
             vectorStudents.end()
         );
@@ -761,9 +763,9 @@ void Generate2()
         // su listu
         start = std::chrono::high_resolution_clock::now();       
         for(student &s: listStudents) {
-            if(s.finalGrade >= 5) listKietiakai.push_back(s);
+            if(s.getFinal() >= 5) listKietiakai.push_back(s);
         }
-        listStudents.remove_if([](student s){return s.finalGrade >= 5;});
+        listStudents.remove_if([](student s){return s.getFinal() >= 5;});
         end = std::chrono::high_resolution_clock::now();
         diff = end-start;
         listTimes.push_back(diff.count());
@@ -774,13 +776,13 @@ void Generate2()
         // su deque
         start = std::chrono::high_resolution_clock::now();  
         for(student &s: dequeStudents) {
-            if(s.finalGrade >= 5) dequeKietiakai.push_back(s);
+            if(s.getFinal() >= 5) dequeKietiakai.push_back(s);
         }
         dequeStudents.erase(
             std::remove_if(
                 dequeStudents.begin(),
                 dequeStudents.end(),
-                [](student s){return s.exam >= 5;}
+                [](student s){return s.getExam() >= 5;}
             ),
             dequeStudents.end()
         );
@@ -790,24 +792,17 @@ void Generate2()
 
         dequeKietiakai.clear();
         dequeLievakai.clear();
+        */
     }
     // Isvedami rezultatai
     std::cout << "----------------------------------------------------------------------------------------- \n";
-    std::cout << "Skaicius        Funkcija           Laikas su vector | Laikas su listu | Laikas su deque \n";
+    std::cout << "Skaicius        Funkcija           Laikas su vector | Laikas su listu | Laikas su deque   \n";
     std::cout << "----------------------------------------------------------------------------------------- \n";
 
     for (int i = 1000; i <= 10000000; i*=10) {
         std::cout << std::setw(13) << std::left << i << std::setw(25) << std::left << "Pirmu budu atskirti" << std::setw(16) 
             << std::left << std::setprecision(4) << std::fixed << vectorTimes.front() << std::setw(25) << std::left 
             << std::setprecision(4) << std::fixed << listTimes.front() << std::setprecision(4) << std::fixed << dequeTimes.front() << "\n";
-        vectorTimes.pop_front();
-        listTimes.pop_front();
-        dequeTimes.pop_front();
-
-        std::cout << std::setw(13) << std::left << i << std::setw(25) << std::left << "Antru budu atskirti" << std::setw(16) 
-            << std::left << std::setprecision(4) << std::fixed << vectorTimes.front() 
-            << std::setw(25) << std::left << std::setprecision(4) << std::fixed << listTimes.front() 
-            << std::setprecision(4) << std::fixed << dequeTimes.front() << "\n";
         vectorTimes.pop_front();
         listTimes.pop_front();
         dequeTimes.pop_front();
