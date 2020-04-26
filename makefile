@@ -1,5 +1,5 @@
-main: functions.o
-	g++ -O3 -o main main.cpp functions.o
+main: functions_test2.o
+	g++ -O3 -o main main.cpp functions_test2.o
 test: functions_test.o
 	g++ -O3 -o main test.cpp functions_test.o
 test2: functions_test2.o

@@ -86,9 +86,9 @@ void StartProgram()
             int skaicius;
             while(veda)
             {
-                std::cout<<"Iveskite savo " << skc+1 << " namu darbu bala: \n";
+                std::cout<<"Iveskite savo " << currentStud.getGradesCount()+1 << " namu darbu bala: \n";
 
-                while(!(std::cin >> skaicius || skaicius>10 || skaicius<0))
+                while(!(std::cin >> skaicius && skaicius<=10 && skaicius>=0))
                 {
                     std::cout << "Bloga ivestis! Iveskite savo namu darbu bala skaiciumi (0-10)";
                     std::cin.clear();
@@ -109,7 +109,7 @@ void StartProgram()
 
             std::cout<<"Iveskite savo egzamino bala: \n";
             int examGrade;
-            while(!(std::cin >> examGrade) || examGrade > 10 || examGrade < 0 )
+            while(!(std::cin >> examGrade) && examGrade <= 10 && examGrade >= 0 )
             {
                 std::cout << "Bloga ivestis! Iveskite savo egzamino bala skaiciumi (0-10)";
                 std::cin.clear();
