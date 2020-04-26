@@ -56,7 +56,7 @@ make test2
 - Ši programos versija rūšiuoja studentus pagal jų vidurkį atitinkamai virš 5 balų bei žemiau.
 - Atskiras dvi studentų grupes išveda į du atskirus duomenų failus.
 - Matuoja kiekvieno proceso testavimo metu laiko sąnaudas.
-#Testavimo laikai
+### Testavimo laikai
 ![Testo 1 laikai](https://i.imgur.com/uMCOVSg.png)
 ![Testo 2 laikai](https://i.imgur.com/vPU36D7.png)
 ![Testo 3 laikai](https://i.imgur.com/nm5V6Po.png)
@@ -66,14 +66,26 @@ make test2
 - Ši programos versija leidžia vartotojui paleisti testinę programos versija, kurioje sugeneruojami atsitiktiniai duomenys į duomenų failus studentai1000, studentai10000 ir t.t.
 - Ši programos versija ištestuoja failų nuskaitymo, stundetų atskyrimo bei studentų išrikiavimo laikus naudojant tris skirtingus konteinerius - vector, list ir deque.
 - Atskirų studentų grupių neišveda į duomenų failus, kadangi svarbiausia yra testavimo laikai.
-# Testavimo laikai 
+### Testavimo laikai 
 ![Testo laikai](https://i.imgur.com/lFcy8sH.png)
 ## 6. [v1.0 programos versija](https://github.com/Matas86/AntrojiUzduotis/releases/tag/v1.0)
 - Ši programos versija leidžia vartotojui paleisti testinę programos versiją, kurioje sugeneruojami atsitiktiniai duomenys į duomenų failus studentai1000, studentai10000 ir t.t.
 - Ši programos versija ištestuoja nuskaitytų iš duomenų failų į tris atskirus konteinerius atskyrimą dviem būdais, nurodytais užduoties sąlygoje.
 - Atskirų studentų grupių neišveda į duomenų failus, kadangi svarbiausia yra testavimo laikai.
-# Testavimo laikai 
+### Testavimo laikai 
 ![Testo laikai](https://i.imgur.com/UEoBCVy.png)
+
+## 7. [v1.1 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.1)
+- Ši programos versija leidžia vartotojui paleistinę testinę programos versiją, lygiai tokią pačią kaip v1.0, tačiau pagrindinė programos dalis, kas yra struktūra students yra pakeista klase students.
+### Testavimo laikai
+### Iš pradžių paleistas greičiausias atskyrimo testas su klase.
+![Testo laikai](https://i.imgur.com/tS7Sxsg.png)
+### Testai, stebintys programos atskirų dalių greitaveiką.
+![Testo 1 laikai](https://i.imgur.com/eC5O7co.png)
+![Testo 2 laikai](https://i.imgur.com/kNG37b6.png)
+![Testo 3 laikai](https://i.imgur.com/XuUnLwk.png)
+![Testo 4 laikai](https://i.imgur.com/rTwrK83.png)
+![Testo 5 laikai](https://i.imgur.com/MOSTYoe.png)
 # Testavimui panaudoto kompiuterio specifikacijos:
 - Intel i7 3770k boosted to 3,9GHz (8 cores)
 - 8GB DDR3 1600MHz
