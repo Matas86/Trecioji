@@ -7,9 +7,8 @@
 //base class
 class Stud_base
 {
-    public: 
-        Stud_base(std::string n, std::string s) : name(n), surname(s) {}
     protected:
+        Stud_base(std::string n, std::string s) : name(n), surname(s) {}    
         std::string name;
         std::string surname;
         std::string id;
