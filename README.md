@@ -84,7 +84,7 @@ make test2
 ## 8. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.2)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.1), tačiau klasė padaryta vadovaujantis Rule of Three taisykle (pridėtas destruktorius, operatorius = persidengimas).
 
-## 9. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.5)
+## 9. [v1.5 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.5)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.2), tačiau klasė perdaryta atskiriant ją į base ir derived klases.
 
 # Testavimui panaudoto kompiuterio specifikacijos:
