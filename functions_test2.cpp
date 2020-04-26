@@ -4,6 +4,29 @@
 #include <iomanip>
 #include <chrono>
 
+student& student::operator=(const student& studd)
+{
+    name = studd.name;
+    surname = studd.surname;
+    homework = studd.homework;
+    exam = studd.exam;
+    finalGrade = studd.finalGrade;
+    random = studd.random;
+    return *this;
+}
+
+student::~student()
+{
+    homework.clear();
+    homework.shrink_to_fit();
+}
+
+void check()
+{
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        std::cout<<"\n";
+}
 void StartProgram()
 {
     srand(time(NULL));
@@ -13,9 +36,7 @@ void StartProgram()
     while(!(std::cin >> failas))
     {
         std::cout << "Bloga ivestis! Iveskite savo varda";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-        std::cout<<"\n";
+        check();
     }
     if(failas == "y")
     {
@@ -33,9 +54,7 @@ void StartProgram()
         while(!(std::cin >> N) || N<0)
         {
             std::cout << "Bloga ivestis! Iveskite studentu skaiciu skaitmeniu";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout<<"\n";
+            check();
         }
 
         std::vector<student> stud;
@@ -47,9 +66,7 @@ void StartProgram()
             while(!(std::cin >> randomas))
             {
                 std::cout << "Bloga ivestis! Iveskite savo varda";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
             if(randomas == "y")
                 stud[i].setRandom(true);
@@ -64,18 +81,14 @@ void StartProgram()
             while(!(std::cin >> name))
             {
                 std::cout << "Bloga ivestis! Iveskite savo varda";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
 
             std::cout<<"Iveskite savo pavarde: \n";
             while(!(std::cin >> surname))
             {
                 std::cout << "Bloga ivestis! Iveskite savo pavarde";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
             student currentStud(name,surname);
             int skc;
@@ -91,9 +104,7 @@ void StartProgram()
                 while(!(std::cin >> skaicius && skaicius<=10 && skaicius>=0))
                 {
                     std::cout << "Bloga ivestis! Iveskite savo namu darbu bala skaiciumi (0-10)";
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                    std::cout<<"\n";
+                    check();
                 }
                 currentStud.addGrade(skaicius);
                 std::cout<<"Ar norite toliau vesti namu darbu balus? (taip - y, ne - n) \n";
@@ -112,9 +123,7 @@ void StartProgram()
             while(!(std::cin >> examGrade) && examGrade <= 10 && examGrade >= 0 )
             {
                 std::cout << "Bloga ivestis! Iveskite savo egzamino bala skaiciumi (0-10)";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
             currentStud.setExam(examGrade);
             stud.push_back(currentStud);
@@ -126,18 +135,14 @@ void StartProgram()
             while(!(std::cin >> name))
             {
                 std::cout << "Bloga ivestis! Iveskite savo varda";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
 
             std::cout<<"Iveskite savo pavarde: \n";
             while(!(std::cin >> surname))
             {
                 std::cout << "Bloga ivestis! Iveskite savo pavarde";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                std::cout<<"\n";
+                check();
             }
             student currentStud(name,surname); 
         int skc;
@@ -490,7 +495,6 @@ void GenerateToFile(int count, std::string outputName)
     std::uniform_int_distribution<int> dist(1, 10);
     std::uniform_int_distribution<int> countDist(7, 16);
 
-    //int poPazymiu = countDist(mt);
     int poPazymiu = 10;
 
     output << std::setw(20) <<std::left << "Vardas";
