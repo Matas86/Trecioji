@@ -76,16 +76,13 @@ make test2
 ![Testo laikai](https://i.imgur.com/UEoBCVy.png)
 
 ## 7. [v1.1 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.1)
-- Ši programos versija leidžia vartotojui paleistinę testinę programos versiją, lygiai tokią pačią kaip v1.0, tačiau pagrindinė programos dalis, kas yra struktūra students yra pakeista klase students.
+- Ši programos versija leidžia vartotojui paleisti testinę programos versiją, lygiai tokią pačią kaip v1.0, tačiau pagrindinė programos dalis, kas yra struktūra students yra pakeista klase students.
 ### Testavimo laikai
-### Iš pradžių paleistas greičiausias atskyrimo testas su klase.
+### Paleistas greičiausias atskyrimo testas su klase.
 ![Testo laikai](https://i.imgur.com/tS7Sxsg.png)
-### Testai, stebintys programos atskirų dalių greitaveiką.
-![Testo 1 laikai](https://i.imgur.com/eC5O7co.png)
-![Testo 2 laikai](https://i.imgur.com/kNG37b6.png)
-![Testo 3 laikai](https://i.imgur.com/XuUnLwk.png)
-![Testo 4 laikai](https://i.imgur.com/rTwrK83.png)
-![Testo 5 laikai](https://i.imgur.com/MOSTYoe.png)
+
+## 7. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.2)
+- Ši programos versija yra niekuo kitokia nuo praeitosios (v1.1), tačiau klasė padaryta vadovaujantis Rule of Three taisykle (pridėtas destruktorius, operatorius = persidengimas).
 # Testavimui panaudoto kompiuterio specifikacijos:
 - Intel i7 3770k boosted to 3,9GHz (8 cores)
 - 8GB DDR3 1600MHz
