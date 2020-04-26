@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions_test2.h"
 
 int main()
 {

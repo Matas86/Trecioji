@@ -33,18 +33,20 @@ void StartProgram()
 
     std::string failas;
     std::cout<<"Ar duomenys bus nuskaitomi is duomenu failo? (taip - y, ne - n) \n";
-    while(!(std::cin >> failas))
-    {
-        std::cout << "Bloga ivestis! Iveskite savo varda";
-        check();
-    }
+    std::cin>>failas;
     if(failas == "y")
     {
+        std::cout<<"Iveskite duomenu failo pavadinima: \n";
+        while(!(std::cin >> failas))
+        {
+        std::cout << "Bloga ivestis! Iveskite savo failo pavadinima";
+        check();
+        }
 
         std::vector <student> stud;
         stud.reserve(100000);
-        //Skaityk(stud);
-        //Isvesk(stud);
+        Skaityk(stud,failas);
+        Isvesk(stud);
     }
     else
     {
@@ -337,6 +339,7 @@ void Skaityk(std::list<student> &stud, std::string filename)
         try{
              file.open(filename, std::ifstream::in);
             if(!file.good()) throw "Nepavyko atidaryti failo, isitikinkite, kad jis egzistuoja";
+            break;
             break;
         }catch(const char * e){
             std::cout << e << "\n";
