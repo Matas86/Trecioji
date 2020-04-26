@@ -67,7 +67,7 @@ void StartProgram()
             std::cout<<"Ar norite, kad studento pazymiai butu generuojami atsitiktinai? (taip - y, ne - n)"<<std::endl;
             while(!(std::cin >> randomas))
             {
-                std::cout << "Bloga ivestis! Iveskite savo varda";
+                std::cout << "Bloga ivestis! Iveskite raidę y arba n";
                 check();
             }
             if(randomas == "y")
