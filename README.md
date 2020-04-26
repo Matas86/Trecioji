@@ -81,8 +81,12 @@ make test2
 ### Paleistas greičiausias atskyrimo testas su klase.
 ![Testo laikai](https://i.imgur.com/tS7Sxsg.png)
 
-## 7. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.2)
+## 8. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.2)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.1), tačiau klasė padaryta vadovaujantis Rule of Three taisykle (pridėtas destruktorius, operatorius = persidengimas).
+
+## 9. [v1.2 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.5)
+- Ši programos versija yra niekuo kitokia nuo praeitosios (v1.2), tačiau klasė perdaryta atskiriant ją į base ir derived klases.
+
 # Testavimui panaudoto kompiuterio specifikacijos:
 - Intel i7 3770k boosted to 3,9GHz (8 cores)
 - 8GB DDR3 1600MHz
