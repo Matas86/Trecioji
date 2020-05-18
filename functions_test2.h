@@ -15,15 +15,15 @@
 #include <list>
 #include <deque>
 
-#include "student.h"
+#include "vector.h"
 
-void Skaityk(std::vector<student> &stud);
+void Skaityk(vector<student> &stud);
 
-void Skaityk(std::vector<student> &stud, std::string filename);
+void Skaityk(vector<student> &stud, std::string filename);
 
-void Isvesk(std::vector<student> stud);
+void Isvesk(vector<student> stud);
 
-void FinalCounter(std::vector<student> &stud);
+void FinalCounter(vector<student> &stud);
 
 double FinalCounter(student stud);
 

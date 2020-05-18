@@ -13,15 +13,15 @@
 #include <chrono>
 #include <string>
 
-#include "student_test.h"
+#include "vector.h"
 
-void Skaityk(std::vector<student> &stud);
+void Skaityk(vector<student> &stud);
 
-void Skaityk(std::vector<student> &stud, std::string filename);
+void Skaityk(vector<student> &stud, std::string filename);
 
-void Isvesk(std::vector<student> stud);
+void Isvesk(vector<student> stud);
 
-void FinalCounter(std::vector<student> &stud);
+void FinalCounter(vector<student> &stud);
 
 bool sortStudents(student A, student B);
 

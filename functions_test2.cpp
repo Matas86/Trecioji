@@ -1,5 +1,5 @@
 #include "functions_test2.h"
-#include "student.h"
+#include "vector.h"
 #include <iostream>
 #include <iomanip>
 #include <chrono>
@@ -65,7 +65,7 @@ void StartProgram()
         check();
         }
 
-        std::vector <student> stud;
+        vector<student> stud;
         stud.reserve(100000);
         Skaityk(stud,failas);
         Isvesk(stud);
@@ -81,7 +81,7 @@ void StartProgram()
             check();
         }
 
-        std::vector<student> stud;
+        vector<student> stud;
         stud.reserve(100000);
         std::string randomas;
         for(int i=0; i<N; i++)
@@ -204,7 +204,7 @@ void StartProgram()
     }
 }
 
-void Isvesk(std::vector<student> stud)
+void Isvesk(vector<student> stud)
 {
     using namespace std;
     FinalCounter(stud);
@@ -306,7 +306,7 @@ void Isvesk(std::vector<student> stud)
 
 }
 
-void Skaityk(std::vector<student> &stud, std::string filename)
+void Skaityk(vector<student> &stud, std::string filename)
 {
     std::ifstream file;
     while(true){
@@ -450,7 +450,7 @@ void Skaityk(std::deque<student> &stud, std::string filename)
     file.close();
 }
 
-void FinalCounter(std::vector<student> &stud)
+void FinalCounter(vector<student> &stud)
 {
     for(int i=0; i<stud.size(); i++)
     {
@@ -555,7 +555,7 @@ void Generate()
         std::string filename = "studentai"+std::to_string(i)+".txt";
         GenerateToFile(i, filename);
 
-        std::vector<student> vectorStudents;
+        vector<student> vectorStudents;
         std::list<student> listStudents;
         std::deque<student> dequeStudents;
 
@@ -688,7 +688,7 @@ void Generate2()
         std::string filename = "studentai"+std::to_string(i)+".txt";
         GenerateToFile(i, filename);
 
-        std::vector<student> vectorStudents;
+        vector<student> vectorStudents;
         std::list<student> listStudents;
         std::deque<student> dequeStudents;
 
@@ -711,7 +711,7 @@ void Generate2()
         FinalCounter(dequeStudents);
 
         //Atskyrimas 1 būdu
-        std::vector<student> vectorKietiakai, vectorLievakai;
+        vector<student> vectorKietiakai, vectorLievakai;
         std::list<student> listKietiakai, listLievakai;
         std::deque<student> dequeKietiakai, dequeLievakai;
 
