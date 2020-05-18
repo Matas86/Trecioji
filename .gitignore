@@ -33,6 +33,7 @@
 *.layout
 bin/
 obj/
+.idea/
 .vscode/
 *.txt
 *.depend
