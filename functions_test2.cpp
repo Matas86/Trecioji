@@ -242,11 +242,11 @@ void Isvesk(vector<student> stud)
                 if(stud[i].getGradesCount()%2==1)
                 {
                     
-                    cout<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<homeworks[(stud[i].getGradesCount())/2]*1.0<<"\n";
+                    cout<<setw(30)<<left<<stud.at(i).getSurname()<<setw(30)<<left<<stud.at(i).getName()<<setw(5)<<left<<fixed<<setprecision(2)<<homeworks[(stud.at(i).getGradesCount())/2]*1.0<<"\n";
                 }
                 else
                 {
-                    cout<<setw(30)<<left<<stud[i].getSurname()<<setw(30)<<left<<stud[i].getName()<<setw(5)<<left<<fixed<<setprecision(2)<<(homeworks[(stud[i].getGradesCount())/2 - 1] + homeworks[((stud[i].getGradesCount())/2)])/2.0<<"\n";
+                    cout<<setw(30)<<left<<stud.at(i).getSurname()<<setw(30)<<left<<stud.at(i).getName()<<setw(5)<<left<<fixed<<setprecision(2)<<(homeworks[(stud.at(i).getGradesCount())/2 - 1] + homeworks[((stud.at(i).getGradesCount())/2)])/2.0<<"\n";
                 }
 
             }
