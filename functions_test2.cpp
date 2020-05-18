@@ -15,6 +15,28 @@ student& student::operator=(const student& studd)
     return *this;
 }
 
+student::student(std::string studentData)
+{
+    int p;
+    std::string p1;
+    std::stringstream stream;
+    stream<<studentData;
+    stream>>name>>surname;
+    while(stream>>p1)
+    {
+        p = stoi(p1);
+        homework.push_back(p);
+    }
+    exam = homework.back();
+    homework.pop_back();
+}
+
+student::student(std::string n, std::string s)
+{
+    name = n;
+    surname = s;
+}
+
 student::~student()
 {
     homework.clear();
@@ -452,7 +474,7 @@ double FinalCounter(student stud)
         sum += stud.getGrades().at(i);
     }
 
-    avg = stud.hasGrades() ? 0.0 : (double)sum/stud.getGradesCount();
+    avg = stud.hasGrades() ?  (double)sum/stud.getGradesCount() : 0.0;
 
     return (0.4 * avg) + (0.6 * stud.getExam());
 }

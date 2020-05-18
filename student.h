@@ -7,8 +7,7 @@
 //base class
 class Stud_base
 {
-    protected:
-        Stud_base(std::string n, std::string s) : name(n), surname(s) {}    
+    protected:   
         std::string name;
         std::string surname;
         std::string id;
@@ -23,7 +22,10 @@ class student : public Stud_base
         bool random;
     public:
         //base constructor
-        student(std::string n, std::string s) : Stud_base(n,s) {}
+        student(std::string n, std::string s);
+
+        student(std::string studentData);
+
         //getters
         std::string getName() {return name;}
         std::string getSurname() {return surname;}

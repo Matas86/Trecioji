@@ -25,6 +25,8 @@ void Isvesk(std::vector<student> stud);
 
 void FinalCounter(std::vector<student> &stud);
 
+double FinalCounter(student stud);
+
 bool sortStudents(student A, student B);
 
 void StartProgram();
