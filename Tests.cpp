@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "student.h"
+#include "vector.h"
 #include "functions_test2.h"
 
 TEST_CASE ("main.cpp") 
