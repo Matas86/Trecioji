@@ -29,12 +29,19 @@ Programą sudaro du .cpp failai, viename atlikta programa su C kalbos masyvais, 
 make test2
 ./main
 ```
-## v1.0 versijos paleidimas
+## v1.0 - v1.5 versijos paleidimas
 - Paleiskite terminalą ir atsidarykite jame projekto aplanką.
 - Į terminalą įveskite komandas paeiliui:
 ```
 make test2
 ./main
+```
+## v2.0 versijos paleidimas
+- Paleiskite terminalą ir atsidarykite jame projekto aplanką.
+- Į terminalą įveskite komandas paeiliui:
+```
+make tests
+./tests
 ```
 
 
@@ -86,6 +93,9 @@ make test2
 
 ## 9. [v1.5 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.5)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.2), tačiau klasė perdaryta atskiriant ją į base ir derived klases.
+
+## 10. [v2.0 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v2.0)
+- Ši programos versija yra niekuo kitokia nuo praeitosios (v1.5), tačiau į ją pridėta Doxygen dokumentacija bei CATCH2 Unit Testing.
 
 # Testavimui panaudoto kompiuterio specifikacijos:
 - Intel i7 3770k boosted to 3,9GHz (8 cores)
