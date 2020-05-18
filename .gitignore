@@ -38,3 +38,4 @@ obj/
 *.txt
 *.depend
 main
+tests
