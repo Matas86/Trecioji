@@ -43,6 +43,13 @@ make test2
 make tests
 ./tests
 ```
+## v2.1 versijos paleidimas
+- Paleiskite terminalą ir atsidarykite jame projekto aplanką.
+- Į terminalą įveskite komandas paeiliui:
+```
+make (blank)/test/test2/tests
+./main arba ./tests
+```
 
 
 # Programos išleidimai
@@ -96,6 +103,9 @@ make tests
 
 ## 10. [v2.0 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v2.0)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.5), tačiau į ją pridėta Doxygen dokumentacija bei CATCH2 Unit Testing.
+
+## 11. [v2.1 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v2.1)
+- Ši programos versija yra niekuo kitokia nuo praeitosios (v2.0), tačiau joje viskas veikia ant savos Vector klasės.
 
 # Testavimui panaudoto kompiuterio specifikacijos:
 - Intel i7 3770k boosted to 3,9GHz (8 cores)
