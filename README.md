@@ -101,7 +101,7 @@ make (blank)/test/test2/tests
 ## 9. [v1.5 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v1.5)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.2), tačiau klasė perdaryta atskiriant ją į base ir derived klases.
 
-## 10. [v2.0 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v2.0)
+## 10. [v2.0 programos versija](https://github.com/Matas86/Trecioji/releases/tag/V2.0)
 - Ši programos versija yra niekuo kitokia nuo praeitosios (v1.5), tačiau į ją pridėta Doxygen dokumentacija bei CATCH2 Unit Testing.
 
 ## 11. [v2.1 programos versija](https://github.com/Matas86/Trecioji/releases/tag/v2.1)
